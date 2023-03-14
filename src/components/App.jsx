@@ -4,7 +4,6 @@ import Button from './Button';
 import ImageGallery from './ImageGallery';
 import Searchbar from './Searchbar';
 import Loader from './Loader';
-import '../styles.css/styles.css';
 
 let page = 1;
 
@@ -23,7 +22,6 @@ class App extends Component {
     if (inputData.trim() === '') {
       alert('You cannot search by empty field, try again.');
       return;
-
     } else {
       try {
         this.setState({ status: 'pending' });
@@ -33,7 +31,6 @@ class App extends Component {
           alert(
             'Sorry, there are no images matching your search query. Please try again.'
           );
-
         } else {
           this.setState({
             items: hits,
@@ -42,7 +39,7 @@ class App extends Component {
             status: 'resolved',
           });
         }
-      }catch (error) {
+      } catch (error) {
         this.setState({ status: 'rejected' });
       }
     }
@@ -83,7 +80,7 @@ class App extends Component {
         </div>
       );
     }
-    
+
     if (status === 'rejected') {
       return (
         <div className="App">

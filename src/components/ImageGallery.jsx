@@ -1,6 +1,5 @@
 import ImageGalleryItem from './ImageGalleryItem';
 import PropTypes from 'prop-types';
-import '../styles.css/styles.css';
 
 function ImageGallery({ items }) {
   return (

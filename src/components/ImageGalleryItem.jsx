@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from './Modal';
 import PropTypes from 'prop-types';
-import '../styles.css/styles.css';
 
 class ImageGalleryItem extends Component {
   state = {

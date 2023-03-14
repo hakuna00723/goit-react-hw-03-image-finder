@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ImSearch } from 'react-icons/im';
-import '../styles.css/styles.css';
 
 class Searchbar extends Component {
   state = {

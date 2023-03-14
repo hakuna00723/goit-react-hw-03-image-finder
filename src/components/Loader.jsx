@@ -1,5 +1,4 @@
 import { Bars } from 'react-loader-spinner';
-import '../styles.css/styles.css';
 
 const Loader = () => {
   return (
