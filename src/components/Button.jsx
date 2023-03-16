@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ onClick }) => {
+const Button = ({ onNextPage }) => {
   return (
-    <button className="Button" onClick={onClick}>
+    <button className="Button" onClick={onNextPage}>
       Load more
     </button>
   );
 };
 
-export default Button;
-
 Button.propTypes = {
-  onClick: PropTypes.func,
+  onNextPage: PropTypes.func.isRequired,
 };
+
+export default Button;
