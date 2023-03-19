@@ -10,7 +10,6 @@ class ImageGallery extends Component {
     images: [],
     error: null,
     status: 'idle',
-    page: 1,
     isThisLastPage: false,
   };
 
@@ -18,12 +17,6 @@ class ImageGallery extends Component {
     return imgInfo.map(({ id, webformatURL, largeImageURL }) => {
       return { id, webformatURL, largeImageURL };
     });
-  };
-
-  onNextPage = () => {
-    this.setState(prevState => ({
-      page: prevState.page + 1,
-    }));
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -53,6 +46,7 @@ class ImageGallery extends Component {
       const response = await fetchImages(query, page);
       const newImages = this.cutImg(response.hits);
       const isThisLastPage = Math.ceil(response.total / 12) <= page;
+
       this.setState(prevState => ({
         images: [...prevState.images, ...newImages],
         status: 'resolved',
@@ -71,6 +65,7 @@ class ImageGallery extends Component {
 
   render() {
     const { images, error, status, isThisLastPage } = this.state;
+    const { onNextPage } = this.props;
 
     if (status === 'idle') {
       return <div></div>;
@@ -90,7 +85,7 @@ class ImageGallery extends Component {
           </ul>
           {status === 'pending' && <Loader />}
           {status !== 'pending' && !isThisLastPage && (
-            <Button onNextPage={this.onNextPage} status={status} />
+            <Button onClick={onNextPage} status={status} />
           )}
         </>
       );
@@ -99,7 +94,9 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
-  inputData: PropTypes.string,
+  inputData: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+  onNextPage: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
