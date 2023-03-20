@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ onNextPage }) => {
+const Button = ({ onClick }) => {
   return (
-    <button className="Button" onClick={onNextPage}>
+    <button className="Button" type="button" onClick={() => onClick()}>
       Load more
     </button>
   );
